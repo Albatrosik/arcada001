@@ -119,3 +119,18 @@ if not finished:
         for s in enemies:
             s.rect.x -= robin.x_speed
  
+        # проверка на выйгрыш и пройгрыш
+    if sprite.collide_rect(robin, door):
+        finished = True
+        #window.fill(C_BLACK)
+        #пишем текст на экране
+        text = font.render("Ты Выйграл!", 1, C_GREEN)
+        window.blit(text, (250,250))
+
+#проверка на пройгрыш
+    if robin not in all_sprites or robin.rect.top > win_height:
+        finished = True
+        #window.fill(C_BLACK)
+        #пишем текст на экране
+        text = font.render('Ты проиграл:(', 1 , C_RED)
+        window.blit(text, (250,250))
